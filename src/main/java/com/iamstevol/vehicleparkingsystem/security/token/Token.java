@@ -1,6 +1,6 @@
 package com.iamstevol.vehicleparkingsystem.security.token;
 
-import com.iamstevol.vehicleparkingsystem.entity.user.User;
+import com.iamstevol.vehicleparkingsystem.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
