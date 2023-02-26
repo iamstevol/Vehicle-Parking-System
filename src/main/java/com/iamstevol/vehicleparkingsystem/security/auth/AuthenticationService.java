@@ -1,6 +1,6 @@
 package com.iamstevol.vehicleparkingsystem.security.auth;
 
-import com.iamstevol.vehicleparkingsystem.entity.user.User;
+import com.iamstevol.vehicleparkingsystem.entity.User;
 import com.iamstevol.vehicleparkingsystem.repository.UserRepository;
 import com.iamstevol.vehicleparkingsystem.security.config.JwtService;
 import com.iamstevol.vehicleparkingsystem.security.token.Token;
@@ -23,8 +23,8 @@ public class AuthenticationService {
 
   public AuthenticationResponse register(RegisterRequest request) {
     var user = User.builder()
-        .firstname(request.getFirstname())
-        .lastname(request.getLastname())
+            .firstName(request.getFirstname())
+        .lastName(request.getLastname())
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
         .role(ApplicationUserRole.USER)
@@ -66,7 +66,7 @@ public class AuthenticationService {
   }
 
   private void revokeAllUserTokens(User user) {
-    var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
+    var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getUserId());
     if (validUserTokens.isEmpty())
       return;
     validUserTokens.forEach(token -> {
