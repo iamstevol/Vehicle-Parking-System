@@ -1,6 +1,6 @@
 package com.iamstevol.vehicleparkingsystem.entity;
 
-import com.iamstevol.vehicleparkingsystem.constant.Category;
+import com.iamstevol.vehicleparkingsystem.constant.VehicleType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -40,9 +40,9 @@ public class Ticket extends BaseEntity{
     @Column(name = "exitTime")
     private  LocalDateTime exitTime;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "vehicleType")
-    private Category vehicleType;
+    @ManyToOne
+    @JoinColumn(name = "categoryId", referencedColumnName = "category_id")
+    private Category category;
 
     @ManyToOne
     @JoinColumn(name = "lot_id", referencedColumnName = "lot_id")

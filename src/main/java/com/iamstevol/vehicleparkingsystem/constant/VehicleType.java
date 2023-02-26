@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum Category {
+public enum VehicleType {
 
     MOTORCYCLE("small"),
 

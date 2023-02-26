@@ -14,7 +14,6 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Setter
 @Getter
-@Builder
 public abstract class BaseEntity implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)

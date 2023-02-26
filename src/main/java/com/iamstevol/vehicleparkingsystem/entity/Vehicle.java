@@ -1,6 +1,6 @@
 package com.iamstevol.vehicleparkingsystem.entity;
 
-import com.iamstevol.vehicleparkingsystem.constant.Category;
+import com.iamstevol.vehicleparkingsystem.constant.VehicleType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -25,8 +25,9 @@ public class Vehicle extends BaseEntity{
     @Column(name = "vehicle_id", updatable = false, nullable = false)
     private String vehicleId;
 
-    @Column(name = "vehicleType")
-    private Category vehicleType;
+    @ManyToOne
+    @JoinColumn(name = "categoryId", referencedColumnName = "category_id")
+    private Category category;
 
     @Column(name = "numberPlate")
     private String numberPlate;
