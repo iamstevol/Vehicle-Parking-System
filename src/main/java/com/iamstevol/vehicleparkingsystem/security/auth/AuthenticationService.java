@@ -1,5 +1,7 @@
 package com.iamstevol.vehicleparkingsystem.security.auth;
 
+import com.iamstevol.vehicleparkingsystem.dto.response.UserResponse;
+import com.iamstevol.vehicleparkingsystem.dto.response.VehicleResponse;
 import com.iamstevol.vehicleparkingsystem.entity.User;
 import com.iamstevol.vehicleparkingsystem.repository.UserRepository;
 import com.iamstevol.vehicleparkingsystem.security.config.JwtService;
@@ -11,6 +13,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -74,5 +79,20 @@ public class AuthenticationService {
       token.setRevoked(true);
     });
     tokenRepository.saveAll(validUserTokens);
+  }
+
+
+  public List<UserResponse> getAllUser() {
+    return repository.findAll().stream().map(this::mapToUserResponse)
+            .collect(Collectors.toList());
+  }
+
+  public UserResponse mapToUserResponse(User user) {
+    return UserResponse.builder()
+            .userId(user.getUserId())
+            .email(user.getEmail())
+            .firstName(user.getFirstName())
+            .lastName(user.getLastName())
+            .build();
   }
 }

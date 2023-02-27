@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface CategoryRepository extends JpaRepository<Category, String>{
 
     boolean existsByCategoryName (String categoryName);
+
 }

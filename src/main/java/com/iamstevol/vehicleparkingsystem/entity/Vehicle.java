@@ -34,6 +34,8 @@ public class Vehicle extends BaseEntity{
 
     @Column(name = "colour")
     private String colour;
+    @Column(name = "ownerName")
+    private String ownerName;
 
     @ManyToMany(mappedBy = "vehicle")
     private List<ParkingSlot> slot = new ArrayList<>();
