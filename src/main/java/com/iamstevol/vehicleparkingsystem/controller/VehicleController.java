@@ -55,7 +55,7 @@ public class VehicleController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{numberPlate}")
+    @GetMapping("/search/{numberPlate}")
     public ResponseEntity<?> searchVehicle(@PathVariable("numberPlate") String numberPlate) {
         log.info("Inside getVehicle of VehicleController");
         VehicleRequest response = vehicleService.searchVehicle(numberPlate);
