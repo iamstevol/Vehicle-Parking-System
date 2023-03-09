@@ -121,6 +121,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>vehicle_parking_system</finalName>
     </build>
 
 </project>
