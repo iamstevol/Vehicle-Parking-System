@@ -17,11 +17,11 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-<<<<<<< HEAD
-  private static final String SECRET_KEY = "F-JaNdRgUkXp2s5v8y/B?E(G+KbPeShVmYq3t6w9z$C&F)J@McQfTjWnZr4u7x!A";
-=======
+
+
+
   private static final String SECRET_KEY = "EdHvMcQfTjWmZq4t7wszqCyFiJaNdRgUkXp2s5u8x/AoDfG+KbPeShVmYq3t6w9y";
->>>>>>> 3fc43f36f204e1dfc5f82fcf9eec79fa254ec1bb
+
 
   public String extractUsername(String token) {
     return extractClaim(token, Claims::getSubject);
