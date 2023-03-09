@@ -13,6 +13,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -21,6 +24,19 @@ public class SecurityConfiguration {
   private final JwtAuthenticationFilter jwtAuthFilter;
   private final AuthenticationProvider authenticationProvider;
   private final LogoutHandler logoutHandler;
+
+  private final String[] WHITE_LIST = new String[]{
+                    "/auth/**",
+                            "/login",
+                            "/h2-console/**",
+                            "/v3/api-docs/**",
+                            "/swagger-ui/**",
+                            "/actuator/**",
+                            "/swagger-resources/**",
+                            "/swagger-ui.html",
+                            "/webjars/**"
+  };
+
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -32,6 +48,8 @@ public class SecurityConfiguration {
         .authorizeHttpRequests()
         .requestMatchers("/", "api/v1/**")
           .permitAll()
+            .requestMatchers(WHITE_LIST)
+            .permitAll()
         .anyRequest()
           .authenticated()
         .and()
