@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .and()
         .authorizeHttpRequests()
-        .requestMatchers("/", "/api/v1/**")
+        .requestMatchers("/", "api/v1/**")
           .permitAll()
         .anyRequest()
           .authenticated()
