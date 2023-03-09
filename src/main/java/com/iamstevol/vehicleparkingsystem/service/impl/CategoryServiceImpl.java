@@ -1,5 +1,6 @@
 package com.iamstevol.vehicleparkingsystem.service.impl;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.iamstevol.vehicleparkingsystem.dto.request.CategoryRequestDto;
 import com.iamstevol.vehicleparkingsystem.dto.request.UpdateRequestDto;
 import com.iamstevol.vehicleparkingsystem.dto.response.CategoryResponseDto;
@@ -13,7 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Slf4j
